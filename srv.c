@@ -222,6 +222,7 @@ else {
   own_pid = getpid();
   parent_pid = getppid();
   
+  for(;;) {
   printf("CHIELD side: runnig. nproc %d own_pid %d parent pid %d\n", nproc, own_pid, parent_pid);
   
   bzero(&message, sizeof(message));
@@ -306,6 +307,9 @@ else {
   
   // display the message
   printf("CHIELD SIDE DEBUG %d Data send is : [%s] \n", nproc, message.mesg_text); 
+
+// END LOOP CHIELD
+  }
   
 }
 
