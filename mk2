@@ -1,0 +1,19 @@
+OBJ_DIR=obj/
+BIN_DIR=bin/
+LIBS = -lclntsh
+#CFLAGS= -ansi -W -Wall -pedantic
+#CFLAGS= -O -W -Wall -G -pedantic
+CFLAGS= -O -W -Wall -pedantic -g
+
+all : srv cli
+
+$(OBJ_DIR)srv.o : srv.c
+	gcc -c $(CFLAGS) srv.c -o $(OBJ_DIR)srv.o
+srv : $(OBJ_DIR)srv.o
+	gcc -o srv $(OBJ_DIR)srv.o 
+
+$(OBJ_DIR)cli.o : cli.c
+	gcc -c $(CFLAGS) cli.c -o $(OBJ_DIR)cli.o
+cli : $(OBJ_DIR)cli.o $(OBJ_DIR)dtfUtil.o
+	gcc -o cli $(OBJ_DIR)cli.o
+
